@@ -1,0 +1,19 @@
+1，注意，测试类代码的路径必须和被测试的类代码路径一直，否则报错
+
+2，Maven中坐标的含义：
+   pom.xml文件中的标签：简称gav
+     <groupId>com.maven.test</groupId>    <!--表示公司或组织域名倒叙，g-->
+     <artifactId>MyMaven</artifactId>     <!--模块名，a-->
+     <version>0.0.1-SNAPSHOT</version>    <!--版本名，v-->
+
+3，Maven常用命令，及其执行顺序是从上到下
+    mvn clean : 清理，会删除原先的target目录，即删除了旧的老版本的.class文件
+    mvn compile : 编译项目内的代码
+    mvn test-compile : 编译测试程序
+    mvn test : 执行测试
+    mvn package : 打包
+    mvn install : 安装，导出到本地的Maven仓库
+
+4，mvn package : 命令会把编译好的文件压缩成jar包放到target文件夹里
+ 
+5，mvn install : 这个命令会把编译好的jar包导入，也称安装到Maven本地仓库中，便于其他的工程依赖使用。

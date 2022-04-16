@@ -5,13 +5,23 @@
 	<modelVersion>4.0.0</modelVersion>
     
 	<!--pom.xml文件中的标签表示坐标：简称gav-->
-	<groupId>com.maven.test</groupId>   <!--表示公司或组织域名倒叙，g-->
-	<artifactId>MyMaven</artifactId>    <!--模块名，a-->
+	<groupId>com.maven.project01</groupId>   <!--表示公司或组织域名倒叙，g-->
+	<artifactId>maven-project01</artifactId>    <!--模块名，a-->
 	<version>0.0.1-SNAPSHOT</version>   <!--版本名，v-->
+	<!--maven执行打包package命令后， 打成的包名由artifactId和version组成-->
 
-	<name>MyMaven</name>
+
+	<name>maven-project01</name>
 	  
+	<!--根据源码文件的编码格式在这里进行设置，即xxx.java文件的格式是UTF-8这里要设置一样，不设置的话maven会跟随系统的编码格式，
+	    编译mvn compile时出现：maven File encoding has not been set，using platform encoding GBK, i.e. build is platform dependent!-->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	
 	<dependencies>
+		<!--导入junit依赖-->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -19,4 +29,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+
 </project>
