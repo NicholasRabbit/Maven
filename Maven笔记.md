@@ -75,3 +75,60 @@ maven_project01 : 根目录：项目名
     </mirrors>
 ```
 
+### 四，Maven的依赖
+
+如果maven_project02中使用到了maven_project01中的类，须在maven_project01执行install命令，并且再maven_project02的pom.xml中加入01的依赖
+
+```xml
+<dependency>
+    <groupId>com.maven</groupId>
+    <artifactId>maven_project01</artifactId>  
+</dependency>
+```
+
+### 五，依赖的范围
+
+如果junit依赖设置范围为test，则在项目中的主程序类中使用test报下的类就会报错，因为test对主程序无效
+
+```xml
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.0</version>
+    <scope>test</scope>
+</dependency>
+```
+
+![1650294094141](note-images/1650294094141.png)
+
+### 六，新加Maven模块注意事项
+
+1，idea新加的模块的父工程Parent设置为空，后期再加；
+
+2，加完之后，注意检查新加模块的pom.xml，添加父工程模块
+
+```xml
+<!--父工程模块-->
+<parent>
+    <groupId>com.jeesite</groupId>
+    <artifactId>jeesite-parent</artifactId>
+    <version>5.0.1-SNAPSHOT</version>
+    <relativePath>../parent/pom.xml</relativePath>
+</parent>
+```
+
+3，在Maven列表里，新加的模块后面有个"root"，需在父工程模块的pom.xml里添加子模块声明，才可消失
+
+```xml
+<module>../weixin</module>
+```
+
+4，注意idea添加子模块后，会在父工程的pom.xml里自动加上下面的内容，是错误的，需删掉
+
+```xml
+<parent>
+    <groupId>com.jeesite</groupId>
+    <artifactId>jeesite-weixin</artifactId>
+</parent>
+```
+
