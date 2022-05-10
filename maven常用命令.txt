@@ -17,3 +17,5 @@
 4，mvn package : 命令会把编译好的文件压缩成jar包放到target文件夹里
  
 5，mvn install : 这个命令会把编译好的jar包导入，也称安装到Maven本地仓库中，便于其他的工程依赖使用。
+
+6，mvn tomcat:run : 一般在项目root根目录下执行启动内嵌的Tomcat
