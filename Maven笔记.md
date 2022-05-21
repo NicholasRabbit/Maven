@@ -99,7 +99,7 @@ maven_project01 : 根目录：项目名
 </dependency>
 ```
 
-![1650294094141](note-images/1650294094141.png)
+![1650294094141](note_images/1650294094141.png)
 
 ### 六，新加Maven模块注意事项
 
@@ -132,3 +132,12 @@ maven_project01 : 根目录：项目名
 </parent>
 ```
 
+### 七，\<dependencyManagement>和\<dependencies>的区别
+
+![1653125142838](note_images/1653125142838.png)
+
+![1653125162217](note_images/1653125162217.png)
+
+![1653125309002](note_images/1653125309002.png)
+
+![1653125428030](note_images/1653125428030.png)
