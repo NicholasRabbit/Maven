@@ -134,10 +134,14 @@ maven_project01 : 根目录：项目名
 
 ### 七，\<dependencyManagement>和\<dependencies>的区别
 
-![1653125142838](note_images/1653125142838.png)
+![1653125142838](note-images/1653125142838.png)
 
-![1653125162217](note_images/1653125162217.png)
+![1653125162217](note-images/1653125162217.png)
 
-![1653125309002](note_images/1653125309002.png)
+![1653125309002](note-images/1653125309002.png)
 
-![1653125428030](note_images/1653125428030.png)
+![1653125428030](note-images/1653125428030.png)
+
+### 八，Maven打war包的依赖与Tomcat冲突问题
+
+如果使用Maven打war包，放到Tomcat中部署项目，注意相关的依赖，如servlet-api.jar，jsp-api.jar，el-api.jar等的<scope>要设置为provide，因为Tomcat服务器有这些jar包，否则启动项目会冲突，报错。
