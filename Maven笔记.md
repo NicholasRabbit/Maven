@@ -77,7 +77,9 @@ maven_project01 : 根目录：项目名
 
 ### 四，Maven的依赖
 
-如果maven_project02中使用到了maven_project01中的类，须在maven_project01执行install命令，并且再maven_project02的pom.xml中加入01的依赖
+如果maven_project02中使用到了maven_project01中的类，须在maven_project01执行install命令，并且再maven_project02的pom.xml中加入01的依赖。
+
+Maven根据pom文件设置获取依赖的路径是: 现在本地仓库找，本地没有再去maven的setting.xml里制定的线上仓库里找。
 
 ```xml
 <dependency>
@@ -86,9 +88,9 @@ maven_project01 : 根目录：项目名
 </dependency>
 ```
 
-### 五，依赖的范围
+### 五，\<scope\>
 
-如果junit依赖设置范围为test，则在项目中的主程序类中使用test报下的类就会报错，因为test对主程序无效
+如果junit依赖设置范围为test，则在项目中的主程序类中使用test包下的类就会报错，因为test对主程序无效
 
 ```xml
 <dependency>
@@ -99,7 +101,28 @@ maven_project01 : 根目录：项目名
 </dependency>
 ```
 
-![1650294094141](note_images/1650294094141.png)
+![1650294094141](note-images/1650294094141.png)
+
+Dependency [scope](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) is used to limit the transitivity of a dependency and to determine when a dependency is included in a classpath.  
+
+There are 6 scopes:  
+
+- **compile**
+  This is the default scope, used if none is specified. Compile dependencies are available in all classpaths of a project. Furthermore, those dependencies are propagated to dependent projects.
+- **provided**
+  This is much like `compile`, but indicates you expect the JDK or a container to provide the dependency at runtime. For example, when building a web application for the Java Enterprise Edition, you would set the dependency on the Servlet API and related Java EE APIs to scope `provided` because the web container provides those classes. A dependency with this scope is added to the classpath used for compilation and test, but not the runtime classpath. It is not transitive.
+- **runtime**
+  This scope indicates that the dependency is not required for compilation, but is for execution. Maven includes a dependency with this scope in the runtime and test classpaths, but not the compile classpath.
+- **test**
+  This scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases. This scope is not transitive. Typically this scope is used for test libraries such as JUnit and Mockito. It is also used for non-test libraries such as Apache Commons IO if those libraries are used in unit tests (src/test/java) but not in the model code (src/main/java).
+- **system**
+  This scope is similar to `provided` except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository.
+- **import**
+  This scope is only supported on a dependency of type `pom` in the `` section. It indicates the dependency is to be replaced with the effective list of dependencies in the specified POM's `` section. Since they are replaced, dependencies with a scope of `import` do not actually participate in limiting the transitivity of a dependency.
+
+
+
+
 
 ### 六，新加Maven模块注意事项
 
@@ -144,4 +167,4 @@ maven_project01 : 根目录：项目名
 
 ### 八，Maven打war包的依赖与Tomcat冲突问题
 
-如果使用Maven打war包，放到Tomcat中部署项目，注意相关的依赖，如servlet-api.jar，jsp-api.jar，el-api.jar等的<scope>要设置为provide，因为Tomcat服务器有这些jar包，否则启动项目会冲突，报错。
+如果使用Maven打war包，放到Tomcat中部署项目，注意相关的依赖，如servlet-api.jar，jsp-api.jar，el-api.jar等的\<scope\>要设置为provide，因为Tomcat服务器有这些jar包，否则启动项目会冲突，报错。
