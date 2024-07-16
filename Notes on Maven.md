@@ -168,3 +168,12 @@ There are 6 scopes:
 ### 八，Maven打war包的依赖与Tomcat冲突问题
 
 如果使用Maven打war包，放到Tomcat中部署项目，注意相关的依赖，如servlet-api.jar，jsp-api.jar，el-api.jar等的\<scope\>要设置为provide，因为Tomcat服务器有这些jar包，否则启动项目会冲突，报错。
+
+### 九, Maven profiles
+
+[Maven Profiles](https://maven.apache.org/guides/introduction/introduction-to-profiles.html#What_are_the_different_types_of_profile.3F_Where_is_each_defined.3F)
+
+![1721117189481](note-images/1721117189481.png)
+
+[IDE Maven Profiles](https://www.jetbrains.com/help/idea/work-with-maven-profiles.html#declare_maven_profiles)
+
